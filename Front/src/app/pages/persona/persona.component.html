@@ -60,12 +60,25 @@
           <mat-cell *matCellDef="let row"> {{row.estadoCivil}} </mat-cell>
         </ng-container>
 
-         <!-- estadoCivil Column -->
+         <!-- estadoCivil Column 
          <ng-container matColumnDef="tieneHermanod">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Hermanos </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.tieneHermanod}} </mat-cell>
-        </ng-container>
+         </ng-container>-->
 
+         <ng-container matColumnDef="tieneHermanod">
+          <mat-header-cell *matHeaderCellDef> Hermanos 
+          
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <mat-checkbox [(ngModel)]="row.tieneHermanod"
+                          (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)"
+                          [aria-label]="checkboxLabel(row)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
         
           <!-- actions -->
     <ng-container matColumnDef="actions">

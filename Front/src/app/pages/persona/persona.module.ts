@@ -28,6 +28,8 @@ import { AgregarComponent } from './dialogs/agregar/agregar.component';
 import { EditarComponent } from './dialogs/editar/editar.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     DeleteComponent,
@@ -67,6 +69,7 @@ exports: [
     HttpClientModule,
     MatCardModule,
     MatDatepickerModule,
+    MatCheckboxModule,
     CommonModule
   ],
   bootstrap: [AppComponent]

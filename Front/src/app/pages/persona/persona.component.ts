@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,6 +11,7 @@ import { Persona } from './models/persona';
 import { PersonaService } from './service/persona.service';
 import { AgregarComponent } from './dialogs/agregar/agregar.component';
 import { EditarComponent } from './dialogs/editar/editar.component';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 
@@ -21,7 +21,7 @@ import { EditarComponent } from './dialogs/editar/editar.component';
   styleUrls: ['./persona.component.css']
 })
 export class PersonaComponent implements OnInit , AfterViewInit {
-
+  selection = new SelectionModel<Persona>(true, []);
   displayedColumn = ['id', 'nombre', 'descripcion', 'precio', 'cantidad', 'imagen', 'actions'];
   displayedColumns = ['id', 'nombre', 'apellido', 'fechaNacimiento', 'foto', 'estadoCivil', 'tieneHermanod', 'actions'];
   public productos = new MatTableDataSource<Producto>()
@@ -43,9 +43,34 @@ export class PersonaComponent implements OnInit , AfterViewInit {
     this.personas.sort = this.sort;
     this.personas.paginator = this.paginator;
   }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.personas.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.personas.data);
+  }
+
+    /** The label for the checkbox on the passed row */
+    checkboxLabel(row?: Persona): string {
+      if (!row) {
+        return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+      }
+      return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+    }
+
   ngOnInit(){
-    
-    //this.getAllProducto();
+   
     this.getAllPersona();
   }
   public getAllPersona = () => {
