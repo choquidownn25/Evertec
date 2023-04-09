@@ -15,11 +15,6 @@ import Swal from 'sweetalert2';
 })
 export class AgregarComponent {
 selectedFiles: any[];
- 
-checked = false;
-indeterminate = false;
-labelPosition: 'before' | 'after' = 'after';
-disabled = false;
   
 constructor(public dialogRef: MatDialogRef<AgregarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Persona,
@@ -80,10 +75,6 @@ chooseFile(files: FileList) {
   }
 }
 
-uploadFile = (files) => {
-  
-  //this.http.post('https://localhost:5001/api/upload', formData, {reportProgress: true, observe: 'events'})
-   
-}
+
 
 }

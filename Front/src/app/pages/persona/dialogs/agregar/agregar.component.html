@@ -4,9 +4,11 @@
   
     <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm" >
       <div class="form">
-       
+        <div class="form">
+          <h4>Escoja imagen</h4><br>
+        </div>
         <label class="btn btn-secondary" (click)="fileInput.value = null">
-          Escoja Imagen
+          -
           <input
             #fileInput
             type="file"
@@ -16,12 +18,12 @@
           />
         </label>
 
-
+        <br> 
       </div>
           <!--Textarea for demo purposes-->
       <div class="form">
         <mat-form-field color="accent">
-          <textarea matInput #input class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre" name="nombre" required ></textarea>
+          <textarea matInput #input class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre" name="nombre" maxlength="50"  required ></textarea>
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
           <mat-hint align="end">{{inputstate.value?.length || 0}}/50</mat-hint>
         </mat-form-field>
@@ -30,7 +32,7 @@
       <!--Contains mat-hint for characters count and has maxLengt set-->
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #inputstate class="form-control" placeholder="Apellido" [(ngModel)]="data.apellido" name="apellido" maxlength="10" required >
+          <input matInput #inputstate class="form-control" placeholder="Apellido" [(ngModel)]="data.apellido" name="apellido" maxlength="50" required >
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
           <mat-hint align="end">{{inputstate.value?.length || 0}}/50</mat-hint>
         </mat-form-field>

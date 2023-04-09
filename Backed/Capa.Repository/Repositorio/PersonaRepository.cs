@@ -155,16 +155,18 @@ namespace Capa.Repository.Repositorio
         }
         public Persona Modify(Persona entity)
         {
+            List<Persona> listPersona = new List<Persona>();
             empleadoContext.Entry(entity).State = EntityState.Modified;
             //empleadoContext.SaveChanges();
-   
+
             empleadoContext.SaveChanges();
             using (var ctx = new EmpleadoContext())
             {
-                string name = entity.Nombre;
-                var personas = ctx.Persona.Where(s => s.Nombre == name)
+                //string name = entity.Nombre;
+                var personas = ctx.Persona.Where(s => s.Id == entity.Id)
                               .LastOrDefault<Persona>();
-                foreach (Persona persona in ctx.Persona)
+                listPersona.Add(personas);
+                foreach (Persona persona in listPersona)
                 {
                     persona.Id = personas.Id;
                     persona.Nombre = personas.Nombre;
@@ -188,9 +190,9 @@ namespace Capa.Repository.Repositorio
                 }
             }
             if (resp != null)
-            return resp;
+                return resp;
             else
-                throw new Exception("Entity Validation Failed - errors follow:\n" ); // Add 
+                throw new Exception("Entity Validation Failed - errors follow:\n"); // Add 
 
         }
 

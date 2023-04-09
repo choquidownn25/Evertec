@@ -15,8 +15,9 @@ export class PersonaService {
   baseURLPersona = environment.API_URL_TODOS_PERSONA;
   baseUrl = environment.API_URL_TODOS_TICKET;
   addUrl = environment.API_URL_TODOS_ADD;
-  addUrlPersona = environment.API_URL_TODOS_ADD_PERSONA
+  addUrlPersona = environment.API_URL_TODOS_ADD_PERSONA;
   editUrl = environment.API_URL_TODOS_EDIT;
+  editarUrlPersona = environment.API_URL_TODOS_EDIT_PERSONA;
   deleteUrl = environment.API_URL_TODOS_DELETE;
   dialogData: any;
   dataChange: BehaviorSubject<Producto[]> = new BehaviorSubject<Producto[]>([]);
@@ -63,9 +64,9 @@ export class PersonaService {
    }
 
     // UPDATE, PUT METHOD
-     updateItem(persona: Persona): void {
-    this.httpClient.post(this.editUrl, persona).subscribe(data => {
-        this.dialogData = persona;
+     updateItem(formData :FormData): void {
+    this.httpClient.put(this.editarUrlPersona, formData).subscribe(data => {
+        this.dialogData = formData;
         Swal.fire(
           'Good job!',
           'Su dato quedo almacenado !',

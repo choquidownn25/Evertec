@@ -30,7 +30,7 @@ namespace Capa.Presentacion.Api.Controllers
         }
 
         /// <summary>
-        /// Metodo para mostrar dastos en la tabla Alumno
+        /// Metodo para mostrar dastos en la tabla Persona
         /// </summary>
         /// <returns></returns>
         /// 
@@ -50,14 +50,63 @@ namespace Capa.Presentacion.Api.Controllers
         }
 
         [HttpPut()]
-        public IActionResult Update([FromBodyAttribute] Persona entity)
+        public async Task<IActionResult> Update([FromForm] PersonaModels personaModels)
         {
-            _logger.LogInformation("Update : " + entity);
+            Persona Persona = new Persona();
+            Persona entity = new Persona();
+            List<Persona> listPersona = new List<Persona>();
+            _logger.LogInformation("Update : " + personaModels);
             personaRepository = new PersonaRepository(_hostingEnvironment);
-            Persona Persona = entity;
-            personaRepository.Modify(Persona);
+            //Persona Persona = entity;
+
+            if (personaModels.Nombre == null)
+            {
+                return BadRequest(new PersonaModels { Success = false, ErrorCode = "S01", ErrorMessage = "Invalid persona request" });
+            }
+            if (personaModels.file != null)
+            {
+                entity = new Persona()
+                {
+
+                    Id = personaModels.Id,
+                    Nombre = personaModels.Nombre,
+                    Apellido = personaModels.Apellido,
+                    FechaNacimiento = personaModels.FechaNacimiento,
+                    EstadoCivil = personaModels.EstadoCivil,
+                    TieneHermanod = personaModels.TieneHermanod,
+                };
+                //Ajunto los datos para la imagen
+                listPersona.Add(entity);
+                foreach (var item in listPersona)
+                {
+
+                    _logger.LogInformation("file uploaded : " + item);
+                    var respuestaFoto = await personaRepository.WriteFile(personaModels.file, entity);//Se ira almacenar
+                    entity = new Persona()
+                    {
+
+                        Id = item.Id,
+                        Nombre = item.Nombre,
+                        Apellido = item.Apellido,
+                        FechaNacimiento = item.FechaNacimiento,
+                        Foto = respuestaFoto,
+                        EstadoCivil = item.EstadoCivil,
+                        TieneHermanod = item.TieneHermanod,
+
+                    };
+
+                }
+                Persona  = personaRepository.Modify(entity); //Alamacena foto
+            }
+            else
+            {
+                return BadRequest(new PersonaModels { Success = false, ErrorCode = "S02", ErrorMessage = "Invalida foto de la persona request" });
+
+            }
+         
             return Ok(Persona);
         }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromForm] PersonaModels personaModels)
         {
