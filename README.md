@@ -7,7 +7,7 @@
 • Estado civil (Int) {Soltero, Casado} 
 • Tiene hermanos (Boolean) 
 
-![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Documetacion%20Rest.jpg)
+![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Angular.jpg)
 ![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Documetacion%20Rest.jpg)
 
 
