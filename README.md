@@ -1,29 +1,30 @@
-# Asp.Net-User-Role-Membership-Example
-Asp.Net Core Mvc Ejemplo de implementación completa de rol de usuario y membresía
+# Evertec
+1. Crear una tabla que permita Editar, Crear, Eliminar un registro de la siguiente vista 
+2. Vista que permita capturar la siguiente información: • Nombre (String) 
+• Apellido (String) 
+• Fecha de nacimiento (DateTime) 
+• Foto de Usuario (BitMap) 
+• Estado civil (Int) {Soltero, Casado} 
+• Tiene hermanos (Boolean) 
 
-![userrolemembership1](coderush/wwwroot/images/scm3.png)
-![userrolemembership1](coderush/wwwroot/images/scm2.png)
+![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Documetacion%20Rest.jpg)
+![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Documetacion%20Rest.jpg)
 
 
 # Features
 
-- Asp.Net Core Mvc
+- Asp.Net 5
 - EF / Entity Framework
 - Code First
 - C#
-- Beautiful Bootstrap
-- Web API + JQuery
-- SendGrid
-- Upload Profile Picture
-- Edit Profile
-- Change Password
-- Users, Roles and Memberships
+- Angular Version 15
+- Angular Material Desing
 
 
 # Development Tools & Environment
 
-- **Visual Studio 2017 (Community Edition)**. (https://visualstudio.microsoft.com/) 
-- **Syncfusion JQuery Controls EJ1 (Community Edition)**. (https://www.syncfusion.com/products/communitylicense)
+- **Visual Studio 2022 (Community Edition)**. (https://visualstudio.microsoft.com/) 
+- **Visual Code (Community Edition)**. (https://code.visualstudio.com/)
 
 
 
