@@ -22,6 +22,8 @@ Criterios de aceptación
 
 
 ![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Angular.jpg)
+![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Agregar.jpg)
+![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Respuesta.jpg)
 ![userrolemembership1](https://github.com/choquidownn25/Evertec/blob/main/img/Documetacion%20Rest.jpg)
 
 
