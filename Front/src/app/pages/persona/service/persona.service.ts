@@ -19,6 +19,7 @@ export class PersonaService {
   editUrl = environment.API_URL_TODOS_EDIT;
   editarUrlPersona = environment.API_URL_TODOS_EDIT_PERSONA;
   deleteUrl = environment.API_URL_TODOS_DELETE;
+  deleteUrlPersona = environment.API_URL_TODOS_DELETE_PERSONA;
   dialogData: any;
   dataChange: BehaviorSubject<Producto[]> = new BehaviorSubject<Producto[]>([]);
   environment: any;
@@ -35,9 +36,7 @@ export class PersonaService {
   public getData = ( ) => {
     return this.httpClient.get(this.baseURLPersona);
   }
-  getDatas() : Observable<Persona[]> {
-    return this.httpClient.get<Persona[]>('https://localhost:44370/api/Personas');
-  }
+ 
  
   
    // ADD, POST METHOD
@@ -86,7 +85,7 @@ export class PersonaService {
 
   // DELETE METHOD
   deleteItem(id: number): void {
-    this.httpClient.delete(this.deleteUrl + id).subscribe(data => {
+    this.httpClient.delete(this.deleteUrlPersona + id).subscribe(data => {
       //console.log(data['']);
       Swal.fire(
         'Good job!',

@@ -4,7 +4,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
-import { DeleteComponent } from './dialogs/delete/delete.component';
 import { Producto } from '../producto/models/producto';
 import { ProductoService } from '../producto/services/producto.service';
 import { Persona } from './models/persona';
@@ -12,6 +11,7 @@ import { PersonaService } from './service/persona.service';
 import { AgregarComponent } from './dialogs/agregar/agregar.component';
 import { EditarComponent } from './dialogs/editar/editar.component';
 import { SelectionModel } from '@angular/cdk/collections';
+import { EliminarComponent } from './dialogs/eliminar/eliminar.component';
 
 
 
@@ -91,10 +91,7 @@ export class PersonaComponent implements OnInit , AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        // After dialog is closed we're doing frontend updates
-        // For add we're just pushing a new row inside DataService
-       // this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
-        //this.refreshTable();
+
         this.getAllPersona();
       }
       //this.getAllProducto();
@@ -113,18 +110,11 @@ export class PersonaComponent implements OnInit , AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        // When using an edit things are little different, firstly we find record inside DataService by id
-        //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
-        // Then you update that record using data from dialogData (values you enetered)
-        //this.exampleDatabase.dataChange.value[foundIndex] = this.dataService.getDialogData();
-        // And lastly refresh table
-        //this.refreshTable();
-        this.getAllPersona();
+          this.getAllPersona();
       }
     });
   }
-  //deleteItem(i: number, id: number, nombre: string, descripcion: string, precio: number, cantidad: number, imagen: string) {
-  deleteItem(i: number, id: number, nombre: string, apellido: string, fechaNacimiento: Date, foto: string, estadoCivil: string, tieneHermanod: boolean) {
+   deleteItem(i: number, id: number, nombre: string, apellido: string, fechaNacimiento: Date, foto: string, estadoCivil: string, tieneHermanod: boolean) {
     this.index = i;
     this.id = id;
 
@@ -136,16 +126,12 @@ export class PersonaComponent implements OnInit , AfterViewInit {
       buttonsStyling: false
     })
 
-    const dialogRef = this.dialog.open(DeleteComponent, {
+    const dialogRef = this.dialog.open(EliminarComponent, {
       data: {id: id, nombre: nombre, apellido: apellido, fechaNacimiento: fechaNacimiento, foto: foto, estadoCivil: estadoCivil, tieneHermanod: tieneHermanod}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        //const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === this.id);
-        // for delete we use splice in order to remove single object from DataService
-        //this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
-        //this.refreshTable();
         this.getAllPersona();
       }
     });

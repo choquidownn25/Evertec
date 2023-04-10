@@ -71,9 +71,17 @@ namespace Capa.Repository.Repositorio
 
         public void Delete(int id)
         {
-            Persona persona = empleadoContext.Persona.Find(id);
-            empleadoContext.Persona.Remove(persona);
-            empleadoContext.SaveChanges();
+            try
+            {
+                Persona persona = empleadoContext.Persona.Find(id);
+                empleadoContext.Persona.Remove(persona);
+                empleadoContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error  :  " + ex.Message.ToString());
+            }
+           
         }
 
         public void Dispose()

@@ -161,12 +161,17 @@ namespace Capa.Presentacion.Api.Controllers
                 return BadRequest(new PersonaModels { Success = false, ErrorCode = "S02", ErrorMessage = "Invalida foto de la persona request" });
                
             }
-            
-           
-
             return Ok(Persona);
         }
-
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _logger.LogInformation("Dato ingresa eliminar : " + id);
+            personaRepository = new PersonaRepository(_hostingEnvironment);
+            personaRepository.Delete(id);
+            _logger.LogInformation("Dato Eliminado : " + id);
+            return Ok(id);
+        }
 
     }
 }

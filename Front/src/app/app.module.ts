@@ -36,8 +36,9 @@ import { EditarComponent } from './pages/persona/dialogs/editar/editar.component
 import { MatCardModule } from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { EliminarComponent } from './pages/persona/dialogs/eliminar/eliminar.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent, AboutComponent, HelpComponent, NotFoundComponent, ProductoComponent, AddComponent, EditComponent, DeleteComponent, PersonaComponent, AgregarComponent, EditarComponent],
+  declarations: [AppComponent, HomeComponent, ProfileComponent, AboutComponent, HelpComponent, NotFoundComponent, ProductoComponent, AddComponent, EditComponent, DeleteComponent, PersonaComponent, AgregarComponent, EditarComponent, EliminarComponent],
   imports: [
     MatProgressBarModule,
     BrowserModule,

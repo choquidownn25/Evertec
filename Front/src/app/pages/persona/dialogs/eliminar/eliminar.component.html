@@ -1,29 +1,17 @@
-
 <div class="container">
-    <h3 mat-dialog-title>Add  Persona</h3>
+    <h3 mat-dialog-title>Eliminar Persona</h3>
   
-    <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm" >
-      <div class="form">
-        <div class="form">
-          <h4>Escoja imagen</h4><br>
-        </div>
-        <label class="btn btn-secondary" (click)="fileInput.value = null">
-          -
-          <input
-            #fileInput
-            type="file"
-            class="file-input"
-            (change)="chooseFile(fileInput.files)"
-            multiple
-          />
-        </label>
-
-        <br> 
+<form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <div class="form">
+        <mat-form-field color="accent">
+          <input matInput #input class="form-control" placeholder="id" [(ngModel)]="data.id" name="id" required >
+          <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
       </div>
-          <!--Textarea for demo purposes-->
+      <!--Textarea for demo purposes-->
       <div class="form">
         <mat-form-field color="accent">
-          <textarea matInput #input class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre" name="nombre" maxlength="50"  required ></textarea>
+          <textarea matInput #input class="form-control" placeholder="Nombre" [(ngModel)]="data.nombre" name="nombre" maxlength="50" required ></textarea>
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
           <mat-hint align="end">{{inputstate.value?.length || 0}}/50</mat-hint>
         </mat-form-field>
@@ -62,13 +50,8 @@
       
       </div>
       <div mat-dialog-actions>
-              <button type="submit" (click)="confirmAdd()" mat-dialog-close [disabled]="!formControl.valid" mat-button>Save</button>
+            <button type="submit" (click)="confirmAdd()" mat-dialog-close [disabled]="!formControl.valid" mat-button>Eliminar</button>
         <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
       </div>
-
-
-
-     </form>
-      
-  </div>
-  
+</form>
+</div>

@@ -29,12 +29,14 @@ import { EditarComponent } from './dialogs/editar/editar.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { EliminarComponent } from './dialogs/eliminar/eliminar.component';
 
 @NgModule({
   declarations: [
     DeleteComponent,
     AgregarComponent,
-    EditarComponent
+    EditarComponent,
+    EliminarComponent
   ],
   providers: [
     ProductoService
